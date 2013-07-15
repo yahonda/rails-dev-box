@@ -1,10 +1,8 @@
-# A Virtual Machine for Ruby on Rails Core Development
+# A Virtual Machine for Ruby on Rails Core Development with Oracle database
 
 ## Introduction
 
-This project automates the setup of a development environment for working on Ruby on Rails itself. Use this virtual machine to work on a pull request with everything ready to hack and run the test suites.
-
-Please note this virtual machine is not designed to be used for Rails application development.
+This project supports to provide a Oracle database support on top of rails-dev-box. 
 
 ## Requirements
 
@@ -12,184 +10,49 @@ Please note this virtual machine is not designed to be used for Rails applicatio
 
 * [Vagrant 1.1+](http://vagrantup.com)
 
+* VirtualBox needs support 64-bit guest OS
+
 ## How To Build The Virtual Machine
 
 Building the virtual machine is this easy:
 
-    host $ git clone https://github.com/rails/rails-dev-box.git
+* Download [Oracle Database 11g Express Edition](http://www.oracle.com/technetwork/products/express-edition/overview/index.html) for Linux x64. The file name is `oracle-xe-11.2.0-1.0.x86_64.rpm.zip`.
+
+```sh
+    host $ git clone https://github.com/yahonda/rails-dev-box-runs-oracle.git
     host $ cd rails-dev-box
+    host $ vagrant plugin install vagrant-vbguest
+    host * cp oracle-xe-11.2.0-1.0.x86_64.rpm.zip puppet/modules/oracle/files/.
     host $ vagrant up
+```
 
 That's it.
 
-If the base box is not present that command fetches it first. The setup itself takes about 3 minutes in my MacBook Air. After the installation has finished, you can access the virtual machine with
+After the installation has finished, you can access the virtual machine with
 
+```sh
     host $ vagrant ssh
-    Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic-pae i686)
+    Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic x86_64)
     ...
-    vagrant@rails-dev-box:~$
+    vagrant@rails-dev-box:~$ sqlplus system/manager@//localhost:1521/XE
+```
 
-Port 3000 in the host computer is forwarded to port 3000 in the virtual machine. Thus, applications running in the virtual machine can be accessed via localhost:3000 in the host computer.
+Port 3000 in the host computer is forwarded to port 3000 in the virtual machine. Thus, applications running in the virtual machine can be accessed via localhost:3000 in the host computer. 
 
 ## What's In The Box
 
-* Git
+* Everthing in [rails-dev-box](https://github.com/rails/rails-dev-box)
 
-* RVM
-
-* Ruby 2.0.0 (binary RVM install)
-
-* Bundler
-
-* SQLite3, MySQL, and Postgres
-
-* System dependencies for nokogiri, sqlite3, mysql, mysql2, and pg
-
-* Databases and users needed to run the Active Record test suite
-
-* Node.js for the asset pipeline
-
-* Memcached
-
-## Recommended Workflow
-
-The recommended workflow is
-
-* edit in the host computer and
-
-* test within the virtual machine.
-
-Just clone your Rails fork in the very directory of the Rails development box in the host computer:
-
-    host $ ls
-    README.md   Vagrantfile puppet
-    host $ git clone git@github.com:<your username>/rails.git
-
-Vagrant mounts that very directory as _/vagrant_ within the virtual machine:
-
-    vagrant@rails-dev-box:~$ ls /vagrant
-    puppet  rails  README.md  Vagrantfile
-
-Install gem dependencies in there:
-
-    vagrant@rails-dev-box:~$ cd /vagrant/rails
-    vagrant@rails-dev-box:/vagrant/rails$ bundle
-
-We are ready to go to edit in the host, and test in the virtual machine.
-
-This workflow is convenient because in the host computer you normally have your editor of choice fine-tuned, Git configured, and SSH keys in place.
-
-## Virtual Machine Management
-
-When done just log out with `^D` and suspend the virtual machine
-
-    host $ vagrant suspend
-
-then, resume to hack again
-
-    host $ vagrant resume
-
-Run
-
-    host $ vagrant halt
-
-to shutdown the virtual machine, and
-
-    host $ vagrant up
-
-to boot it again.
-
-You can find out the state of a virtual machine anytime by invoking
-
-    host $ vagrant status
-
-Finally, to completely wipe the virtual machine from the disk **destroying all its contents**:
-
-    host $ vagrant destroy # DANGER: all is gone
-
-Please check the [Vagrant documentation](http://vagrantup.com/v1/docs/index.html) for more information on Vagrant.
-
-# Oracle XE 11g on Ubuntu 12.04 using Vagrant
-
-This project enables you to install Oracle 11g XE in a virtual machine running
-Ubuntu 12.04, using [Vagrant] and [Puppet].
+* Oracle 11g XE
 
 ## Acknowledgements
 
-This project was created based on the information in
-[Installing Oracle 11g R2 Express Edition on Ubuntu 64-bit] by Manish Raj, and
-the GitHub repository [vagrant-oracle-xe] by Stefan Glase. The former explains
-how to install Oracle XE 11g on Ubuntu 12.04, without explicitly providing a
-Vagrant or provisioner configuration. The latter has the same purpose as this
-project but uses Ubuntu 11.10.
+This project is based on [rails-dev-box](https://github.com/rails/rails-dev-box) 
+and [vagrant-ubuntu-oracle-xe](https://github.com/hilverd/vagrant-ubuntu-oracle-xe).
 
-Thanks to Charles Walker, Chris Thompson, Jeff Caddel, Matthew Buckett,
-Richard Kolb, and Steven Hsu for various contributions.
+Thanks to everyone who contributes these projects.
 
-## Requirements
+## Questions
 
-* You need to have [Vagrant] installed.
-* The host machine probably needs at least 4 GB of RAM (I have only tested 8 GB
-  of RAM).
-* As Oracle 11g XE is only available for 64-bit machines at the moment, the host
-  machine needs to have a 64-bit architecture.
-* I have tested this project on a host machine running Ubuntu 12.04, but other
-  operating systems should also work, as long as they can run Vagrant.
+Please email me yasuo.honda@gmail.com
 
-## Installation
-
-* Check out this project:
-
-        git clone https://github.com/hilverd/vagrant-ubuntu-oracle-xe.git
-
-* Install [vbguest]:
-
-        vagrant plugin install vagrant-vbguest
-
-* Download [Oracle Database 11g Express Edition] for Linux x64. Place the file
-  `oracle-xe-11.2.0-1.0.x86_64.rpm.zip` in the directory `modules/oracle/files`
-  of this project.
-
-* Run `vagrant up` from the base directory of this project. This should take a
-  few minutes.
-
-You should now be able to connect to the new database at `localhost:1521/XE`
-as `system` with password `manager`. For example, if you have `sqlplus`
-installed on the host machine you can do
-
-    sqlplus system/manager@//localhost:1521/XE
-
-## Troubleshooting
-
-It is important to assign enough memory to the virtual machine, otherwise you
-will get an error
-
-    ORA-00845: MEMORY_TARGET not supported on this system
-
-during the configuration stage. In the `Vagrantfile` 512 MB is assigned. Lower
-values may also work, as long as (I believe) 2 GB of virtual memory is available
-for Oracle, swap is included in this calculation.
-
-If you want to raise the limit of the number of concurrent connections, say to
-200, then according to
-[How many connections can Oracle Express Edition (XE) handle?] you should run
-
-    ALTER SYSTEM SET processes=200 scope=spfile
-
-and restart the database.
-
-[Vagrant]: http://www.vagrantup.com/
-
-[Puppet]: http://puppetlabs.com/
-
-[Oracle Database 11g Express Edition]: http://www.oracle.com/technetwork/products/express-edition/overview/index.html
-
-[Oracle Database 11g EE Documentation]: http://docs.oracle.com/cd/E17781_01/index.htm
-
-[Installing Oracle 11g R2 Express Edition on Ubuntu 64-bit]: http://meandmyubuntulinux.blogspot.co.uk/2012/05/installing-oracle-11g-r2-express.html
-
-[vagrant-oracle-xe]: https://github.com/codescape/vagrant-oracle-xe
-
-[vbguest]: https://github.com/dotless-de/vagrant-vbguest
-
-[How many connections can Oracle Express Edition (XE) handle?]: http://stackoverflow.com/questions/906541/how-many-connections-can-oracle-express-edition-xe-handle
