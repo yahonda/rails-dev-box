@@ -108,7 +108,7 @@ Finally, to completely wipe the virtual machine from the disk **destroying all i
     host $ vagrant destroy # DANGER: all is gone
 
 Please check the [Vagrant documentation](http://vagrantup.com/v1/docs/index.html) for more information on Vagrant.
-=======
+
 # Oracle XE 11g on Ubuntu 12.04 using Vagrant
 
 This project enables you to install Oracle 11g XE in a virtual machine running
