@@ -22,7 +22,7 @@ Building the virtual machine is this easy:
     host $ git clone https://github.com/yahonda/rails-dev-box-runs-oracle.git
     host $ cd rails-dev-box
     host $ vagrant plugin install vagrant-vbguest
-    host * cp oracle-xe-11.2.0-1.0.x86_64.rpm.zip puppet/modules/oracle/files/.
+    host $ cp oracle-xe-11.2.0-1.0.x86_64.rpm.zip puppet/modules/oracle/files/.
     host $ vagrant up
 ```
 
