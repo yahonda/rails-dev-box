@@ -145,6 +145,8 @@ exec { "${as_vagrant} 'gem install bundler --no-rdoc --no-ri'":
   require => Exec['install_ruby']
 }
 
+# --- Oracle ---------------------------------------------------------------------
+
 node rails-dev-box {
   include oracle::server
   include oracle::swap
@@ -155,4 +157,13 @@ node rails-dev-box {
     # So that we let Oracle installer create the group
     require => Service["oracle-xe"],
   }
+}
+
+exec { 'create oracle_enhanced arunit and arunit2 users':
+  user  => 'vagrant',
+  cwd   => '/vagrant/puppet/modules/oracle/files',
+  environment => ['ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe','ORACLE_SID=XE'],
+  path => ['/u01/app/oracle/product/11.2.0/xe/bin'],
+  command => 'sqlplus / as sysdba @create_rails_users.sql',
+  timeout => 0
 }

@@ -1,0 +1,19 @@
+CREATE USER oracle_enhanced IDENTIFIED BY oracle_enhanced;
+
+GRANT unlimited tablespace, create session, create table, create sequence,
+create procedure, create trigger, create view, create materialized view,
+create database link, create synonym, create type, ctxapp TO oracle_enhanced;
+
+CREATE USER arunit IDENTIFIED BY arunit;
+
+GRANT unlimited tablespace, create session, create table, create sequence,
+create procedure, create trigger, create view, create materialized view,
+create database link, create synonym, create type, ctxapp TO arunit;
+
+CREATE USER arunit2 IDENTIFIED BY arunit2;
+
+GRANT unlimited tablespace, create session, create table, create sequence,
+create procedure, create trigger, create view, create materialized view,
+create database link, create synonym, create type, ctxapp TO arunit2;
+
+quit
