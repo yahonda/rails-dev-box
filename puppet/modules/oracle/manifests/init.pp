@@ -106,14 +106,16 @@ class oracle::xe {
       cwd => "/home/vagrant",
       user => root,
       creates => "/home/vagrant/oracle-xe-11.2.0-1.0.x86_64.rpm",
-      unless => "/usr/bin/test -f /etc/default/oracle-xe";
+      unless => "/usr/bin/test -f /etc/default/oracle-xe",
+      timeout => 3600;
     "alien xe":
       command => "/usr/bin/alien --to-deb --scripts Disk1/oracle-xe-11.2.0-1.0.x86_64.rpm",
       cwd => "/home/vagrant",
       require => [Package["alien"], Exec["unzip xe"]],
       creates => "/home/vagrant/oracle-xe_11.2.0-2_amd64.deb",
       user => root,
-      unless => "/usr/bin/test -f /etc/default/oracle-xe";
+      unless => "/usr/bin/test -f /etc/default/oracle-xe",
+      timeout => 3600;
     "configure xe":
       command => "/etc/init.d/oracle-xe configure responseFile=/tmp/xe.rsp >> /tmp/xe-install.log",
       require => [Package["oracle-xe"],
@@ -122,6 +124,7 @@ class oracle::xe {
                   File["/var/lock/subsys/listener"],
                   Exec["set up shm"],
                   Exec["enable swapfile"]],
+      timeout => 3600,
       creates => "/etc/default/oracle-xe";
   }
 
