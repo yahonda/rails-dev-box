@@ -52,13 +52,16 @@ Similarly, Oracle's default network listener port 1521 in the host computer is f
 
 ## Notes
 
-If your host is behind a firewall and 'vagrant up' gets errors running apt-get or installing RVM, then patch Vagrantfile to update the virtual machine configuration. Insert these lines in the file before puppet is invoked:
+If your host is behind a firewall and 'vagrant up' gets errors running apt-get or installing RVM, then create ~/.vagrant.d/Vagrantfile to update the virtual machine's proxy settings:
 
 ```sh
-    config.vm.provision :shell, :inline => "echo 'Acquire::http::proxy \"http://proxy.example.com:80/\";' >> /etc/apt/apt.conf"
-    config.vm.provision :shell, :inline => "echo 'Acquire::https::proxy \"http://proxy.example.com:80/\";' >> /etc/apt/apt.conf"
-    config.vm.provision :shell, :inline => "echo 'export http_proxy=http://proxy.example.com:80/' > /etc/profile.d/vagrant_proxy.sh"
-    config.vm.provision :shell, :inline => "echo 'export https_proxy=http://proxy.example.com:80/' >> /etc/profile.d/vagrant_proxy.sh"
+    # ~/.vagrant.d/Vagrantfile
+    Vagrant.configure('2') do |config|
+      config.vm.provision :shell, :inline => "echo 'Acquire::http::proxy \"http://proxy.example.com:80/\";' >> /etc/apt/apt.conf"
+      config.vm.provision :shell, :inline => "echo 'Acquire::https::proxy \"http://proxy.example.com:80/\";' >> /etc/apt/apt.conf"
+      config.vm.provision :shell, :inline => "echo 'export http_proxy=http://proxy.example.com:80/' > /etc/profile.d/vagrant_proxy.sh"
+      config.vm.provision :shell, :inline => "echo 'export https_proxy=http://proxy.example.com:80/' >> /etc/profile.d/vagrant_proxy.sh"
+    end
 ```
 
 Change the proxy name and port to be your network's proxy.
