@@ -1,8 +1,8 @@
-# A Virtual Machine for Ruby on Rails Core Development with Oracle database
+# A Virtual Machine for Ruby on Rails Core Development with Oracle Database
 
 ## Introduction
 
-This project supports to provide a Oracle database support on top of rails-dev-box. 
+This project provides Oracle Database support on top of rails-dev-box. 
 
 ## Requirements
 
@@ -10,7 +10,7 @@ This project supports to provide a Oracle database support on top of rails-dev-b
 
 * [Vagrant 1.1+](http://vagrantup.com)
 
-* VirtualBox needs support 64-bit guest OS
+* VirtualBox needs support for 64-bit guests
 
 ## How To Build The Virtual Machine
 
@@ -27,29 +27,48 @@ Building the virtual machine is this easy:
 
 That's it.
 
-After the installation has finished, you can access the virtual machine with
+After the installation has finished, you can access the virtual machine with:
 
 ```sh
     host $ vagrant ssh
     Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic x86_64)
     ...
-    vagrant@rails-dev-box:~$ sqlplus system/manager@//localhost:1521/XE
+    vagrant@rails-dev-box:~$ sqlplus system/manager@localhost/XE
 ```
 
 Port 3000 in the host computer is forwarded to port 3000 in the virtual machine. Thus, applications running in the virtual machine can be accessed via localhost:3000 in the host computer. 
+
+Similarly, Oracle's default network listener port 1521 in the host computer is forwarded to port 1521 in the virtual machine. Oracle tools in the host computer can connect to the database in the virtual machine:
+
+```sh
+    host $ sqlplus system/manager@localhost/XE
+```
 
 ## What's In The Box
 
 * Everthing in [rails-dev-box](https://github.com/rails/rails-dev-box)
 
-* Oracle 11g XE
+* Oracle Database 11g Express Edition
+
+## Notes
+
+If your host is behind a firewall and 'vagrant up' gets errors running apt-get or installing RVM, then patch Vagrantfile to update the virtual machine configuration. Insert these lines in the file before puppet is invoked:
+
+```sh
+    config.vm.provision :shell, :inline => "echo 'Acquire::http::proxy \"http://proxy.example.com:80/\";' >> /etc/apt/apt.conf"
+    config.vm.provision :shell, :inline => "echo 'Acquire::https::proxy \"http://proxy.example.com:80/\";' >> /etc/apt/apt.conf"
+    config.vm.provision :shell, :inline => "echo 'export http_proxy=http://proxy.example.com:80/' > /etc/profile.d/vagrant_proxy.sh"
+    config.vm.provision :shell, :inline => "echo 'export https_proxy=http://proxy.example.com:80/' >> /etc/profile.d/vagrant_proxy.sh"
+```
+
+Change the proxy name and port to be your network's proxy.
 
 ## Acknowledgements
 
 This project is based on [rails-dev-box](https://github.com/rails/rails-dev-box) 
 and [vagrant-ubuntu-oracle-xe](https://github.com/hilverd/vagrant-ubuntu-oracle-xe).
 
-Thanks to everyone who contributes these projects.
+Thanks to everyone who contributes to these projects.
 
 ## Questions
 
