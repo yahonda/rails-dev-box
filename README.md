@@ -50,6 +50,51 @@ Similarly, Oracle's default network listener port 1521 in the host computer is f
 
 * Oracle Database 11g Express Edition
 
+## How to clone Rails repositories and execute unit tests
+
+Just clone your Rails fork in the very directory of the Rails development box in the host computer:
+
+    host $ ls
+    README.md   Vagrantfile puppet
+    host $ git clone -b 3-2-stable https://github.com/rails/rails.git rails
+
+Vagrant mounts that very directory as _/vagrant_ within the virtual machine:
+
+    vagrant@rails-dev-box:~$ ls /vagrant
+    puppet  rails  README.md  Vagrantfile
+
+## Execute ActiveRecord 3.2 unit tests with Oracle enhanced adapter
+
+Just execute as described steps below. 
+
+    vagrant@rails-dev-box:~$ cd /vagrant/rails/activerecord
+    vagrant@rails-dev-box:/vagrant/rails/activerecord$ bundle
+    vagrant@rails-dev-box:/vagrant/rails/activerecord$ rake test_oracle
+
+## How to clone the Oracle enhancedd repository and execute unit tests
+
+Clone the oracle-enhanced repository as you do Rails.
+
+    host $ ls
+    README.md   Vagrantfile puppet rails
+
+    host $ git clone -b gemfile_master https://github.com/yahonda/oracle-enhanced.git oracle-enhanced
+
+    host $ ls
+    oracle-enhanced README.md   Vagrantfile puppet rails
+
+## Execute Oracle enhanced adapter unit tests with Rails 3.2.x
+
+Just execute as described steps below. 
+
+    vagrant@rails-dev-box:~$ cd /vagrant/oracle-enhanced
+    vagrant@rails-dev-box:/vagrant/oracle-enhanced $ export RAILS_GEM_PATH=/vagrant/rails
+    vagrant@rails-dev-box:/vagrant/oracle-enhanced$ bundle
+    vagrant@rails-dev-box:/vagrant/oracle-enhanced$ rspec
+
+## How about Rails 4.0?
+As of right now Testing Rails 4.0.x and newer version of rails is not straightforward and needs a lot of help. This is the reason why rails-dev-box-runs-oracle is there. Will update these steps soon.
+
 ## Notes
 
 If your host is behind a firewall and 'vagrant up' gets errors running apt-get or installing RVM, then create ~/.vagrant.d/Vagrantfile to update the virtual machine's proxy settings:
