@@ -78,7 +78,7 @@ Clone the oracle-enhanced repository as you do Rails.
     host $ ls
     README.md   Vagrantfile puppet rails
 
-    host $ git clone -b gemfile_master https://github.com/yahonda/oracle-enhanced.git oracle-enhanced
+    host $ git clone https://github.com/rsim/oracle-enhanced.git
 
     host $ ls
     oracle-enhanced README.md   Vagrantfile puppet rails
@@ -88,7 +88,7 @@ Clone the oracle-enhanced repository as you do Rails.
 Just execute as described steps below. 
 
     vagrant@rails-dev-box:~$ cd /vagrant/oracle-enhanced
-    vagrant@rails-dev-box:/vagrant/oracle-enhanced $ export RAILS_GEM_PATH=/vagrant/rails
+    vagrant@rails-dev-box:/vagrant/oracle-enhanced $ export RAILS_GEM_VERSION=3.2.14
     vagrant@rails-dev-box:/vagrant/oracle-enhanced$ bundle
     vagrant@rails-dev-box:/vagrant/oracle-enhanced$ rspec
 
