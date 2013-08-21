@@ -71,7 +71,7 @@ Just execute as described steps below.
     vagrant@rails-dev-box:/vagrant/rails/activerecord$ bundle
     vagrant@rails-dev-box:/vagrant/rails/activerecord$ rake test_oracle
 
-## How to clone the Oracle enhancedd repository and execute unit tests
+## How to clone the Oracle enhanced repository and execute unit tests
 
 Clone the oracle-enhanced repository as you do Rails.
 
@@ -93,7 +93,38 @@ Just execute as described steps below.
     vagrant@rails-dev-box:/vagrant/oracle-enhanced$ rspec
 
 ## How about Rails 4.0?
-As of right now Testing Rails 4.0.x and newer version of rails is not straightforward and needs a lot of help. This is the reason why rails-dev-box-runs-oracle is there. Will update these steps soon.
+
+Compared with Rails 3.2 tests, Rails 4 still have some failures. This is the reason why rails-dev-box-runs-oracle is there. Here are steps to execute unit tests with Rails 4. Enjoy!
+
+## How to clone Rails repositories and execute unit tests
+
+Just clone your Rails fork in the very directory of the Rails development box in the host computer:
+
+    host $ ls
+    README.md   Vagrantfile puppet
+    host $ git clone -b 4-0-stable https://github.com/rails/rails.git rails
+    host $ git clone https://github.com/rsim/oracle-enhanced.git
+
+## Execute ActiveRecord 4 unit tests with Oracle enhanced adapter
+
+Just execute as described steps below. 
+
+    vagrant@rails-dev-box:~$ bundle config local.activerecord-oracle_enhanced-adapter /vagrant/oracle-enhanced
+    vagrant@rails-dev-box:~$ bundle config disable_local_branch_check true
+    vagrant@rails-dev-box:~$ cd /vagrant/oracle-enhanced
+    vagrant@rails-dev-box:/vagrant/oracle-enhanced$ git checkout rails4
+    vagrant@rails-dev-box:/vagrant/oracle-enhanced$ cd /vagrant/rails/activerecord
+    vagrant@rails-dev-box:/vagrant/rails/activerecord$ bundle
+    vagrant@rails-dev-box:/vagrant/rails/activerecord$ rake test_oracle
+
+## How to execute Oracle enhanced adapter unit tests with Rails 4.0.0
+
+Just execute as described steps below. 
+
+    vagrant@rails-dev-box:~$ cd /vagrant/oracle-enhanced
+    vagrant@rails-dev-box:/vagrant/oracle-enhanced $ export RAILS_GEM_VERSION=4.0.0
+    vagrant@rails-dev-box:/vagrant/oracle-enhanced$ bundle
+    vagrant@rails-dev-box:/vagrant/oracle-enhanced$ rspec
 
 ## Notes
 
