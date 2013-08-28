@@ -167,3 +167,9 @@ exec { 'create oracle_enhanced arunit and arunit2 users':
   command => 'sqlplus / as sysdba @create_rails_users.sql',
   timeout => 0
 }
+
+# --- Other softwares ---------------------------------------------------------------------
+# For those who develop in vagrant vm
+package { ['vim','rlwrap']:
+  ensure => installed
+}
