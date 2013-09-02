@@ -20,5 +20,6 @@ CREATE USER ruby IDENTIFIED BY oci8;
 GRANT connect, resource, create view,create synonym TO ruby;
 GRANT EXECUTE ON dbms_lock TO ruby;
 GRANT CREATE VIEW TO ruby;
+GRANT unlimited tablespace to ruby;
 
 quit
