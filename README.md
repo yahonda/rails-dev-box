@@ -50,28 +50,20 @@ Similarly, Oracle's default network listener port 1521 in the host computer is f
 
 * Oracle Database 11g Express Edition
 
-## How to clone Rails repositories and execute unit tests
+## How to clone Rails repositories
 
 Just clone your Rails fork in the very directory of the Rails development box in the host computer:
 
     host $ ls
     README.md   Vagrantfile puppet
-    host $ git clone -b 3-2-stable https://github.com/rails/rails.git rails
+    host $ git clone https://github.com/rails/rails.git
 
 Vagrant mounts that very directory as _/vagrant_ within the virtual machine:
 
     vagrant@rails-dev-box:~$ ls /vagrant
     puppet  rails  README.md  Vagrantfile
 
-## Execute ActiveRecord 3.2 unit tests with Oracle enhanced adapter
-
-Just execute as described steps below. 
-
-    vagrant@rails-dev-box:~$ cd /vagrant/rails/activerecord
-    vagrant@rails-dev-box:/vagrant/rails/activerecord$ bundle
-    vagrant@rails-dev-box:/vagrant/rails/activerecord$ rake test_oracle
-
-## How to clone the Oracle enhanced repository and execute unit tests
+## How to clone the Oracle enhanced repository
 
 Clone the oracle-enhanced repository as you do Rails.
 
@@ -83,48 +75,24 @@ Clone the oracle-enhanced repository as you do Rails.
     host $ ls
     oracle-enhanced README.md   Vagrantfile puppet rails
 
-## Execute Oracle enhanced adapter unit tests with Rails 3.2.x
+## Execute Oracle enhanced adapter unit tests with Rails 4
 
 Just execute as described steps below. 
 
     vagrant@rails-dev-box:~$ cd /vagrant/oracle-enhanced
-    vagrant@rails-dev-box:/vagrant/oracle-enhanced $ export RAILS_GEM_VERSION=3.2.14
+    vagrant@rails-dev-box:/vagrant/oracle-enhanced $ export RAILS_GEM_VERSION=4.0.1.rc3
     vagrant@rails-dev-box:/vagrant/oracle-enhanced$ bundle
-    vagrant@rails-dev-box:/vagrant/oracle-enhanced$ rspec
+    vagrant@rails-dev-box:/vagrant/oracle-enhanced$ rake spec
 
-## How about Rails 4.0?
-
-Compared with Rails 3.2 tests, Rails 4 still have some failures. This is the reason why rails-dev-box-runs-oracle is there. Here are steps to execute unit tests with Rails 4. Enjoy!
-
-## How to clone Rails repositories and execute unit tests
-
-Just clone your Rails fork in the very directory of the Rails development box in the host computer:
-
-    host $ ls
-    README.md   Vagrantfile puppet
-    host $ git clone -b 4-0-stable https://github.com/rails/rails.git rails
-    host $ git clone https://github.com/rsim/oracle-enhanced.git
-
-## Execute ActiveRecord 4 unit tests with Oracle enhanced adapter
+## Execute ActiveRecord 4 unit tests
 
 Just execute as described steps below. 
 
-    vagrant@rails-dev-box:~$ bundle config local.activerecord-oracle_enhanced-adapter /vagrant/oracle-enhanced
-    vagrant@rails-dev-box:~$ bundle config disable_local_branch_check true
-    vagrant@rails-dev-box:~$ cd /vagrant/oracle-enhanced
-    vagrant@rails-dev-box:/vagrant/oracle-enhanced$ git checkout rails4
-    vagrant@rails-dev-box:/vagrant/oracle-enhanced$ cd /vagrant/rails/activerecord
-    vagrant@rails-dev-box:/vagrant/rails/activerecord$ bundle
-    vagrant@rails-dev-box:/vagrant/rails/activerecord$ rake test_oracle
-
-## How to execute Oracle enhanced adapter unit tests with Rails 4.0.0
-
-Just execute as described steps below. 
-
-    vagrant@rails-dev-box:~$ cd /vagrant/oracle-enhanced
-    vagrant@rails-dev-box:/vagrant/oracle-enhanced $ export RAILS_GEM_VERSION=4.0.0
-    vagrant@rails-dev-box:/vagrant/oracle-enhanced$ bundle
-    vagrant@rails-dev-box:/vagrant/oracle-enhanced$ rspec
+    vagrant@rails-dev-box:~$ cd /vagrant/rails/activerecord
+    vagrant@rails-dev-box:~$ git checkout v4.0.1.rc3
+    vagrant@rails-dev-box:~$ git config --global url."https://".insteadOf git://
+    vagrant@rails-dev-box:~$ bundle
+    vagrant@rails-dev-box:~$ rake test_oracle
 
 ## Notes
 
