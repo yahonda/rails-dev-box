@@ -75,24 +75,45 @@ Clone the oracle-enhanced repository as you do Rails.
     host $ ls
     oracle-enhanced README.md   Vagrantfile puppet rails
 
-## Execute Oracle enhanced adapter unit tests with Rails 4
+## Execute Oracle enhanced adapter unit tests with Rails 4.2
 
 Just execute as described steps below. 
 
-    vagrant@rails-dev-box:~$ cd /vagrant/oracle-enhanced
-    vagrant@rails-dev-box:/vagrant/oracle-enhanced $ export RAILS_GEM_VERSION=4.0.1.rc3
-    vagrant@rails-dev-box:/vagrant/oracle-enhanced$ bundle
-    vagrant@rails-dev-box:/vagrant/oracle-enhanced$ rake spec
+    vagrant@rails-dev-box:$ cd /vagrant
+    vagrant@rails-dev-box:$ git clone https://github.com/rails/arel.git
+    vagrant@rails-dev-box:$ cd /vagrant/rails/
+    vagrant@rails-dev-box:$ git checkout v4.2.0
+    vagrant@rails-dev-box:$ cd /vagrant/oracle-enhanced/
+    vagrant@rails-dev-box:$ git checkout rails42 
+    vagrant@rails-dev-box:$ cd /vagrant/arel/
+    vagrant@rails-dev-box:$ git checkout v6.0.0
+    vagrant@rails-dev-box:$ cd /vagrant/oracle-enhanced/
+    vagrant@rails-dev-box:$ bundle config disable_local_branch_check true
+    vagrant@rails-dev-box:$ bundle config local.activerecord-oracle_enhanced-adapter /vagrant/oracle-enhanced
+    vagrant@rails-dev-box:$ bundle config local.activerecord /vagrant/rails
+    vagrant@rails-dev-box:$ bundle config local.arel /vagrant/arel
+    vagrant@rails-dev-box:$ bundle
+    vagrant@rails-dev-box:$ rake spec
 
-## Execute ActiveRecord 4 unit tests
+## Execute ActiveRecord 4.2 unit tests
 
 Just execute as described steps below. 
 
-    vagrant@rails-dev-box:~$ cd /vagrant/rails/activerecord
-    vagrant@rails-dev-box:~$ git checkout v4.0.1.rc3
-    vagrant@rails-dev-box:~$ git config --global url."https://".insteadOf git://
-    vagrant@rails-dev-box:~$ bundle
-    vagrant@rails-dev-box:~$ rake test_oracle
+    vagrant@rails-dev-box:$ cd /vagrant
+    vagrant@rails-dev-box:$ git clone https://github.com/rails/arel.git
+    vagrant@rails-dev-box:$ cd /vagrant/rails/
+    vagrant@rails-dev-box:$ git checkout v4.2.0
+    vagrant@rails-dev-box:$ cd /vagrant/oracle-enhanced/
+    vagrant@rails-dev-box:$ git checkout rails42 
+    vagrant@rails-dev-box:$ cd /vagrant/arel/
+    vagrant@rails-dev-box:$ git checkout v6.0.0
+    vagrant@rails-dev-box:$ cd /vagrant/rails/activerecord
+    vagrant@rails-dev-box:$ bundle config disable_local_branch_check true
+    vagrant@rails-dev-box:$ bundle config local.activerecord-oracle_enhanced-adapter /vagrant/oracle-enhanced
+    vagrant@rails-dev-box:$ bundle config local.activerecord /vagrant/rails
+    vagrant@rails-dev-box:$ bundle config local.arel /vagrant/arel
+    vagrant@rails-dev-box:$ bundle
+    vagrant@rails-dev-box:$ rake spec
 
 ## Notes
 
