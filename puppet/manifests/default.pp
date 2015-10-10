@@ -121,6 +121,11 @@ package { 'nodejs':
   ensure => installed
 }
 
+# json
+package { 'libgmp3-dev':
+  ensure => installed
+}
+
 # --- Ruby ---------------------------------------------------------------------
 
 exec { 'install_rvm':
