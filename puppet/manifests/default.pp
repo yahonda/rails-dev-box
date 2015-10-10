@@ -121,6 +121,11 @@ package { 'nodejs':
   ensure => installed
 }
 
+# json
+package { 'libgmp3-dev':
+  ensure => installed
+}
+
 # --- Ruby ---------------------------------------------------------------------
 
 exec { 'install_rvm':
@@ -135,7 +140,7 @@ exec { 'install_ruby':
   # The rvm executable is more suitable for automated installs.
   #
   # Thanks to @mpapis for this tip.
-  command => "${as_vagrant} '${home}/.rvm/bin/rvm install 2.0.0 --latest-binary --autolibs=enabled && rvm --fuzzy alias create default 2.0.0'",
+  command => "${as_vagrant} '${home}/.rvm/bin/rvm install 2.2 --autolibs=enabled && rvm --fuzzy alias create default 2.2'",
   creates => "${home}/.rvm/bin/ruby",
   require => Exec['install_rvm']
 }
