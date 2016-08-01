@@ -28,4 +28,8 @@ GRANT EXECUTE ON dbms_lock TO ruby;
 GRANT CREATE VIEW TO ruby;
 GRANT unlimited tablespace to ruby;
 
+alter user hr account unlock;
+alter user hr identified by hr;
+grant execute on sys.dbms_lock to hr;
+
 quit
