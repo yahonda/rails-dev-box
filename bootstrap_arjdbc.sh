@@ -18,8 +18,8 @@ sudo -u vagrant -i git clone https://github.com/sstephenson/ruby-build.git /home
 
 echo installing JRuby
 sudo -H -u vagrant bash -i -c 'source  /home/vagrant/.bashrc'
-sudo -H -u vagrant bash -i -c 'rbenv install jruby-9.1.2.0'
-sudo -H -u vagrant bash -i -c 'rbenv global jruby-9.1.2.0'
+sudo -H -u vagrant bash -i -c 'rbenv install jruby-9.1.5.0'
+sudo -H -u vagrant bash -i -c 'rbenv global jruby-9.1.5.0'
 sudo -H -u vagrant bash -i -c 'gem install bundle'
 
 echo setting up PostgreSQL
