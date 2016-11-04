@@ -1,3 +1,5 @@
+ALTER DATABASE DEFAULT TABLESPACE USERS;
+
 CREATE USER oracle_enhanced IDENTIFIED BY oracle_enhanced;
 
 GRANT unlimited tablespace, create session, create table, create sequence,
