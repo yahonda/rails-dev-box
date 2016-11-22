@@ -13,7 +13,7 @@ sudo -E /opt/mssql/bin/sqlservr-setup --accept-eula --set-sa-password --start-se
 # Install client
 
 sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/mssql-ubuntu-xenial-release/ xenial main" > /etc/apt/sources.list.d/mssqlpreview.list'
-sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
 apt-get update
 export ACCEPT_EULA=Y
 apt-get -y install libodbc1-utf16
