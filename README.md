@@ -19,9 +19,9 @@ Building the virtual machine is this easy:
 * Download [Oracle Database 11g Express Edition](http://www.oracle.com/technetwork/products/express-edition/overview/index.html) for Linux x64. The file name is `oracle-xe-11.2.0-1.0.x86_64.rpm.zip`.
 
 ```sh
-    host $ git clone https://github.com/yahonda/rails-dev-box-runs-oracle.git
-    host $ cp oracle-xe-11.2.0-1.0.x86_64.rpm.zip rails-dev-box-runs-oracle/puppet/modules/oracle/files/.
-    host $ cd rails-dev-box-runs-oracle
+    host $ git clone -b runs_oracle https://github.com/yahonda/rails-dev-box.git
+    host $ cp oracle-xe-11.2.0-1.0.x86_64.rpm.zip rails-dev-box/puppet/modules/oracle/files/.
+    host $ cd rails-dev-box
     host $ vagrant up
 ```
 
