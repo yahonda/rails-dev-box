@@ -32,10 +32,12 @@ install memcached memcached
 install Redis redis-server
 install RabbitMQ rabbitmq-server
 
+# Set locale in advance to create postgresql database with UTF8 encoding
+update-locale LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8
 install PostgreSQL postgresql postgresql-contrib libpq-dev
 sudo -u postgres createuser --superuser vagrant
-sudo -u postgres createdb -O vagrant activerecord_unittest
-sudo -u postgres createdb -O vagrant activerecord_unittest2
+sudo -u postgres createdb -E UTF8 -T template0 -O vagrant activerecord_unittest
+sudo -u postgres createdb -E UTF8 -T template0 -O vagrant activerecord_unittest2
 
 debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
 debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
