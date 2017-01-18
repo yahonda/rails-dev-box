@@ -16,7 +16,7 @@ This project automates the setup of a development environment for working on Rub
 
 * [OPatch 12.2.0.1.8](http://support.oracle.com)
 
-* [COMBO OF OJVM COMPONENT 12.1.0.2.161018 DBPSU + DBPSU 12.1.0.2.161018 (OCT2016)](http://support.oracle.com)
+* [COMBO OF OJVM COMPONENT 12.1.0.2.170117 DBPSU + DBPSU 12.1.0.2.170117](http://support.oracle.com)
 
 * [Oracle Instant Cient for Linux x86-64 Instant Client Package - Basic](http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html)
 * [Oracle Instant Cient for Linux x86-64 Instant Client Package - SQL\*Plus](http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html)
@@ -32,7 +32,7 @@ Building the virtual machine is this easy:
     host $ cp /path/to/p17694377_121020_Linux-x86-64_1of8.zip .
     host $ cp /path/to/p17694377_121020_Linux-x86-64_2of8.zip .
     host $ cp /path/to/p6880880_121010_Linux-x86-64.zip .
-    host $ cp /path/to/p24433133_121020_Linux-x86-64.zip .
+    host $ cp /path/to/p24917069_121020_Linux-x86-64.zip .
     host $ cp /path/to/oracle-instantclient12.1-basic-12.1.0.2.0-1.x86_64.rpm .
     host $ cp /path/to/oracle-instantclient12.1-sqlplus-12.1.0.2.0-1.x86_64.rpm .
     host $ cp /path/to/oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm .
