@@ -16,7 +16,7 @@ curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
 export ACCEPT_EULA=Y
 sudo apt-get update
-sudo -E apt-get -y install mssql-tools unixodbc-dev-utf16 msodbcsql unixodbc-utf16 libodbc1-utf16
+sudo -E apt-get -y install mssql-tools unixodbc-dev
 ln -sfn /opt/mssql-tools/bin/sqlcmd-13.0.1.0 /usr/bin/sqlcmd
 
 # create databases
