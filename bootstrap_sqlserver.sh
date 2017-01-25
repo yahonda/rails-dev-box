@@ -2,7 +2,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 # Install mssql-server
 curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server.list | sudo tee /etc/apt/sources.list.d/mssql-server.list
+curl https://packages.microsoft.com/config/ubuntu/16.10/mssql-server.list | sudo tee /etc/apt/sources.list.d/mssql-server.list
 
 apt-get update
 apt-get install -y mssql-server
@@ -13,7 +13,7 @@ sudo -E /opt/mssql/bin/sqlservr-setup --accept-eula --set-sa-password --start-se
 # Install mssql-tools
 
 curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
+curl https://packages.microsoft.com/config/ubuntu/16.10/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
 export ACCEPT_EULA=Y
 sudo apt-get update
 sudo -E apt-get -y install mssql-tools unixodbc-dev
