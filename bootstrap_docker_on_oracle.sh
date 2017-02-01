@@ -17,7 +17,7 @@ sudo -u vagrant -i cp /vagrant/p17694377_121020_Linux-x86-64_*.zip \
   /home/vagrant/docker-images/OracleDatabase/dockerfiles/12.1.0.2/.
 sudo -u vagrant -i cp /vagrant/p24433133_121020_Linux-x86-64.zip \
   /home/vagrant/docker-images/OracleDatabase/dockerfiles/12.1.0.2/.
-sudo -u vagrant -i cp /vagrant/p24917069_121020_Linux-x86-64 \
+sudo -u vagrant -i cp /vagrant/p6880880_121010_Linux-x86-64.zip \
   /home/vagrant/docker-images/OracleDatabase/dockerfiles/12.1.0.2/.
 cd /home/vagrant/docker-images/OracleDatabase/dockerfiles
 sudo ./buildDockerImage.sh -v 12.1.0.2 -e
