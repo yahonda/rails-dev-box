@@ -57,7 +57,7 @@ Port 3000 in the host computer is forwarded to port 3000 in the virtual machine.
 
 * Git
 
-* Ruby 2.3
+* Ruby 2.4
 
 * Bundler
 
@@ -100,6 +100,8 @@ Install gem dependencies in there:
     ubuntu@rails-dev-box:/vagrant/rails$ bundle
 
 We are ready to go to edit in the host, and test in the virtual machine.
+
+Please have a look at the [Contributing to Ruby on Rails](http://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html) guide for tips on how to run test suites, how to generate an application that uses your local checkout of Rails, etc.
 
 This workflow is convenient because in the host computer you normally have your editor of choice fine-tuned, Git configured, and SSH keys in place.
 
