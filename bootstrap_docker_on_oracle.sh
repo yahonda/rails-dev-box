@@ -48,6 +48,6 @@ sudo -u vagrant -i echo 'export DATABASE_NAME=ORCLPDB1' \
   >> /home/vagrant/.bashrc
 
 echo showing Oracle database status. Wait until "DATABASE IS READY TO USE!" message appears.
-docker logs `docker ps -q
+docker logs `docker ps -q`
 
 echo 'rails-dev-box runs Oracle on Docker now!'
