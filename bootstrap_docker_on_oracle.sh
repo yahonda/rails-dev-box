@@ -13,15 +13,18 @@ install Alien alien
 echo setting up Oracle database server on Docker
 sudo -u vagrant -i git clone -b runs_oracle_enhanced https://github.com/yahonda/docker-images.git \
   /home/vagrant/docker-images
-sudo -u vagrant -i cp /vagrant/p17694377_121020_Linux-x86-64_*.zip \
-  /home/vagrant/docker-images/OracleDatabase/dockerfiles/12.1.0.2/.
-sudo -u vagrant -i cp /vagrant/p24433133_121020_Linux-x86-64.zip \
+sudo -u vagrant -i cp /vagrant/linuxamd64_12102_database_*.zip \
   /home/vagrant/docker-images/OracleDatabase/dockerfiles/12.1.0.2/.
 sudo -u vagrant -i cp /vagrant/p6880880_121010_Linux-x86-64.zip \
-  /home/vagrant/docker-images/OracleDatabase/dockerfiles/12.1.0.2/.
+  /home/vagrant/docker-images/OracleDatabase/samples/applypatch/.
+sudo -u vagrant -i mkdir -p /home/vagrant/docker-images/OracleDatabase/samples/applypatch/12.1.0.2/patches/001/
+sudo -u vagrant -i cp /vagrant/p24732082_121020_Linux-x86-64.zip \
+  /home/vagrant/docker-images/OracleDatabase/samples/applypatch/12.1.0.2/patches/001/.
 cd /home/vagrant/docker-images/OracleDatabase/dockerfiles
 sudo ./buildDockerImage.sh -v 12.1.0.2 -e
-sudo docker run -d -p 1521:1521 --name yahonda oracle/database:12.1.0.2-ee
+cd /home/vagrant/docker-images/OracleDatabase/samples/applypatch
+sudo ./buildPatchedDockerImage.sh -v 12.1.0.2 -e
+sudo docker run -d -p 1521:1521 --name yahonda oracle/database:12.1.0.2-ee-Patch
 
 echo setting up Oracle client
 sudo -u vagrant -i cp /vagrant/oracle-instantclient12.1-basic-12.1.0.2.0-1.x86_64.rpm \
