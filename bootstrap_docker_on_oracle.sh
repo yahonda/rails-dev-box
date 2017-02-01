@@ -16,7 +16,7 @@ sudo -u vagrant -i git clone -b runs_oracle_enhanced https://github.com/yahonda/
 sudo -u vagrant -i cp /vagrant/linuxamd64_12102_database_*.zip \
   /home/vagrant/docker-images/OracleDatabase/dockerfiles/12.1.0.2/.
 sudo -u vagrant -i cp /vagrant/p6880880_121010_Linux-x86-64.zip \
-  /home/vagrant/docker-images/OracleDatabase/samples/applypatch/.
+  /home/vagrant/docker-images/OracleDatabase/samples/applypatch/12.1.0.2/patches/.
 sudo -u vagrant -i mkdir -p /home/vagrant/docker-images/OracleDatabase/samples/applypatch/12.1.0.2/patches/001/
 sudo -u vagrant -i cp /vagrant/p24732082_121020_Linux-x86-64.zip \
   /home/vagrant/docker-images/OracleDatabase/samples/applypatch/12.1.0.2/patches/001/.
