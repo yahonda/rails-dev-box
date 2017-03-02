@@ -12,13 +12,10 @@ This project automates the setup of a development environment for working on Rub
 
 * [Vagrant](http://vagrantup.com)
 
-* [Oracle Database 12c Release 1 (12.1.0.2.0) Enterprise Edition](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html)
-
-* [OPatch 12.2.0.1.8](http://support.oracle.com)
-
-* [Patch 24732082: DATABASE PATCH SET UPDATE 12.1.0.2.170117](http://support.oracle.com)
+* [Oracle Database 12c Release 1 (12.2.0.1.0) Enterprise Edition](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html)
 
 * [Oracle Instant Cient for Linux x86-64 Instant Client Package - Basic](http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html)
+
 * [Oracle Instant Cient for Linux x86-64 Instant Client Package - SQL\*Plus](http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html)
 
 * [Oracle Instant Cient for Linux x86-64 Instant Client Package - Instant Client Package - SDK](http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html)
@@ -29,13 +26,10 @@ Building the virtual machine is this easy:
 
     host $ git clone -b runs_oracle_on_docker https://github.com/yahonda/rails-dev-box.git
     host $ cd rails-dev-box
-    host $ cp /path/to/linuxamd64_12102_database_1of2.zip .
     host $ cp /path/to/linuxamd64_12102_database_2of2.zip .
-    host $ cp /path/to/p6880880_121010_Linux-x86-64.zip .
-    host $ cp /path/to/p24732082_121020_Linux-x86-64.zip .
-    host $ cp /path/to/oracle-instantclient12.1-basic-12.1.0.2.0-1.x86_64.rpm .
-    host $ cp /path/to/oracle-instantclient12.1-sqlplus-12.1.0.2.0-1.x86_64.rpm .
-    host $ cp /path/to/oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm .
+    host $ cp /path/to/oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64 .
+    host $ cp /path/to/oracle-instantclient12.2-sqlplus-12.2.0.1.0-1.x86_64 .
+    host $ cp /path/to/oracle-instantclient12.2-devel-12.2.0.1.0-1.x86_64 .
     host $ vagrant up
 
 That's it.

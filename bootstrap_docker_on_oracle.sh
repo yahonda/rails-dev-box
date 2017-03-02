@@ -13,34 +13,27 @@ install Alien alien
 echo setting up Oracle database server on Docker
 sudo -u vagrant -i git clone -b runs_oracle_enhanced https://github.com/yahonda/docker-images.git \
   /home/vagrant/docker-images
-sudo -u vagrant -i cp /vagrant/linuxamd64_12102_database_*.zip \
-  /home/vagrant/docker-images/OracleDatabase/dockerfiles/12.1.0.2/.
-sudo -u vagrant -i cp /vagrant/p6880880_121010_Linux-x86-64.zip \
-  /home/vagrant/docker-images/OracleDatabase/samples/applypatch/12.1.0.2/patches/.
-sudo -u vagrant -i mkdir -p /home/vagrant/docker-images/OracleDatabase/samples/applypatch/12.1.0.2/patches/001/
-sudo -u vagrant -i cp /vagrant/p24732082_121020_Linux-x86-64.zip \
-  /home/vagrant/docker-images/OracleDatabase/samples/applypatch/12.1.0.2/patches/001/.
+sudo -u vagrant -i cp /vagrant/linuxx64_12201_database.zip \
+  /home/vagrant/docker-images/OracleDatabase/dockerfiles/12.2.0.1/.
 cd /home/vagrant/docker-images/OracleDatabase/dockerfiles
-sudo ./buildDockerImage.sh -v 12.1.0.2 -e
-cd /home/vagrant/docker-images/OracleDatabase/samples/applypatch
-sudo ./buildPatchedDockerImage.sh -v 12.1.0.2 -e
-sudo docker run -d -p 1521:1521 --name yahonda oracle/database:12.1.0.2-ee-Patch
+sudo ./buildDockerImage.sh -v 12.2.0.1 -e
+sudo docker run -d -p 1521:1521 --name yahonda oracle/database:12.2.0.1-ee
 
 echo setting up Oracle client
-sudo -u vagrant -i cp /vagrant/oracle-instantclient12.1-basic-12.1.0.2.0-1.x86_64.rpm \
+sudo -u vagrant -i cp /vagrant/oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm \
   /home/vagrant/.
-sudo -u vagrant -i cp /vagrant/oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm \
+sudo -u vagrant -i cp /vagrant/oracle-instantclient12.2-devel-12.2.0.1.0-1.x86_64.rpm \
   /home/vagrant/.
-sudo -u vagrant -i cp /vagrant/oracle-instantclient12.1-sqlplus-12.1.0.2.0-1.x86_64.rpm \
+sudo -u vagrant -i cp /vagrant/oracle-instantclient12.2-sqlplus-12.2.0.1.0-1.x86_64.rpm \
   /home/vagrant/.
 
-alien -i /home/vagrant/oracle-instantclient12.1-basic-12.1.0.2.0-1.x86_64.rpm
-alien -i /home/vagrant/oracle-instantclient12.1-sqlplus-12.1.0.2.0-1.x86_64.rpm
-alien -i /home/vagrant/oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm
+alien -i /home/vagrant/oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm
+alien -i /home/vagrant/oracle-instantclient12.2-devel-12.2.0.1.0-1.x86_64.rpm
+alien -i /home/vagrant/oracle-instantclient12.2-sqlplus-12.2.0.1.0-1.x86_64.rpm
 
-sudo -u vagrant -i echo 'export PATH=/usr/lib/oracle/12.1/client64/bin:$PATH' \
+sudo -u vagrant -i echo 'export PATH=/usr/lib/oracle/12.2/client64/bin:$PATH' \
   >> /home/vagrant/.bashrc
-sudo -u vagrant -i echo 'export LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib:$LD_LIBRARY_PATH' \
+sudo -u vagrant -i echo 'export LD_LIBRARY_PATH=/usr/lib/oracle/12.2/client64/lib:$LD_LIBRARY_PATH' \
   >> /home/vagrant/.bashrc
 sudo -u vagrant -i echo 'export NLS_LANG=American_America.AL32UTF8' \
   >> /home/vagrant/.bashrc
