@@ -26,7 +26,7 @@ Building the virtual machine is this easy:
 
     host $ git clone -b runs_oracle_on_docker https://github.com/yahonda/rails-dev-box.git
     host $ cd rails-dev-box
-    host $ cp /path/to/linuxamd64_12102_database_2of2.zip .
+    host $ cp /path/to/linuxx64_12201_database.zip .
     host $ cp /path/to/oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64 .
     host $ cp /path/to/oracle-instantclient12.2-sqlplus-12.2.0.1.0-1.x86_64 .
     host $ cp /path/to/oracle-instantclient12.2-devel-12.2.0.1.0-1.x86_64 .
