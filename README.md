@@ -12,12 +12,25 @@ This project automates the setup of a development environment for working on Rub
 
 * [Vagrant 2](http://vagrantup.com)
 
+* [Oracle Database 18c (18.3) for Linux x86-64 "LINUX.X64_180000_db_home.zip"](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/oracle18c-linux-180000-5022980.html)
+
+* [Version 18.3.0.0.0 Basic Package - All files required to run OCI, OCCI, and JDBC-OCI applications "oracle-instantclient18.3-basic-18.3.0.0.0-1.x86_64.rpm"](https://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html)
+
+* [Version 18.3.0.0.0 SQL\*Plus Package - The SQL\*Plus command line tool for SQL and PL/SQL queries "oracle-instantclient18.3-sqlplus-18.3.0.0.0-1.x86_64.rpm"](https://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html)
+
+* [Version 18.3.0.0.0 SDK Package - Additional header files and an example makefile for developing Oracle applications with Instant Client "oracle-instantclient18.3-devel-18.3.0.0.0-1.x86_64.rpm"](https://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html)
+
+
 ## How To Build The Virtual Machine
 
 Building the virtual machine is this easy:
 
-    host $ git clone https://github.com/rails/rails-dev-box.git
+    host $ git clone -b runs_oracle_18c_on_docker https://github.com/yahonda/rails-dev-box.git
     host $ cd rails-dev-box
+    host $ cp /path/to/LINUX.X64_180000_db_home.zip .
+    host $ cp /path/to/oracle-instantclient18.3-basic-18.3.0.0.0-1.x86_64.rpm  .
+    host $ cp /path/to/oracle-instantclient18.3-sqlplus-18.3.0.0.0-1.x86_64.rpm .
+    host $ cp /path/to/oracle-instantclient18.3-devel-18.3.0.0.0-1.x86_64.rpm .
     host $ vagrant up
 
 That's it.
@@ -25,7 +38,7 @@ That's it.
 After the installation has finished, you can access the virtual machine with
 
     host $ vagrant ssh
-    Welcome to Ubuntu 18.10 (GNU/Linux 4.18.0-10-generic x86_64)
+    Welcome to Ubuntu 18.04.1 LTS (GNU/Linux 4.15.0-33-generic x86_64)
     ...
     vagrant@rails-dev-box:~$
 
