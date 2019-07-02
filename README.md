@@ -12,7 +12,6 @@ This project automates the setup of a development environment for working on Rub
 
 * [Vagrant 2](http://vagrantup.com)
 
-
 * [Oracle Database 19c (19.3) for Linux x86-64 (RPM) "LINUX.X64_193000_db_home.zip"](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html)
 
 * [Version 19.3.0.0.0 Basic Package - All files required to run OCI, OCCI, and JDBC-OCI applications "oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm"](https://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html)
@@ -26,7 +25,7 @@ This project automates the setup of a development environment for working on Rub
 
 Building the virtual machine is this easy:
 
-    host $ git clone -b runs_oracle_19c_on_docker https://github.com/yahonda/rails-dev-box.git
+    host $ git clone -b runs_oracle19c_on_docker https://github.com/yahonda/rails-dev-box.git
     host $ cd rails-dev-box
     host $ cp /path/to/LINUX.X64_193000_db_home.zip .
     host $ cp /path/to/oracle-instantclient18.3-basic-19.3.0.0.0-1.x86_64.rpm  .
