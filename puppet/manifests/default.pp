@@ -140,7 +140,7 @@ exec { 'install_ruby':
   # The rvm executable is more suitable for automated installs.
   #
   # Thanks to @mpapis for this tip.
-  command => "${as_vagrant} '${home}/.rvm/bin/rvm install 2.6.3 --autolibs=enabled && rvm --fuzzy alias create default 2.6.3'",
+  command => "${as_vagrant} '${home}/.rvm/bin/rvm install 2.6.4 --autolibs=enabled && rvm --fuzzy alias create default 2.6.4'",
   creates => "${home}/.rvm/bin/ruby",
   require => Exec['install_rvm']
 }
